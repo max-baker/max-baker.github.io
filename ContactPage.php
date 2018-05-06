@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" name="HTML-Basics">
+    <title>Contact</title>
+     <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+  <body>
+  		<header>
+        <a href="index.html" class="headerLink" id="headerLink1">Home</a>
+        <a href="AboutPage.html" class="headerLink" id="headerLink2">Projects</a>
+        <a href="ContactPage.html" class="headerLink" id="headerLink3">Contact</a>
+        <i class="fas fa-power-off" id="headerIcon"></i>
+      </header>
+
+      <?php
+        $name = $_POST['nameIn'];
+        $email = $_POST['emailIn'];
+        echo "hello";
+        $message = $_POST['message'];
+        $from = 'From: max-baker-github.io';
+        $to="cleverdog99@gmail.com";
+        $subject="Website Contact";
+
+        $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+
+        if ($_POST['submit']) {
+            if (mail ($to, $subject, $body, $from)) { 
+                echo "<p>Your message has been sent!</p>";
+            } else { 
+                echo '<p>Something went wrong, go back and try again!</p>'; 
+            }
+        }
+      ?>
+
+
+      <section class="contactForm">
+        <h1 class="contactInput" id="contactTitle"> Contact Me</h1>
+        <form method="post" action="ContactPage.php">
+	        <label class="contactInput" id="nameLableInput">
+	          Your Name: 
+	          <input name="nameIn" class="textBox" type="text" placeholder="Please Enter your Name">
+	        </label>
+	        <br>
+
+	        <label class="contactInput" id="emailLableInput">
+	          Your Email: 
+	          <input name="emailIn" class="textBox" type="email" placeholder="Please Enter your Email Adress">
+	        </label>
+	        <br>
+
+	        <label class="contactInput" id="messageLableInput" name="message">
+	          Your Message:
+	          <textarea class="textBox" placeholder="What is your Message?" id="bigBox"></textarea>
+	        </label>
+
+	        <input type="submit" name="submit" class="contactInput" id="submitButton" value="Submit">
+        </form>
+
+      </section>
+
+   		<footer>
+        <a href="index.html" class="footerLink" id="footerLink1">Home</a> <br>
+        <a href="AboutPage.html" class="footerLink" id="footerLink2">Projects</a> <br>
+        <a href="ContactPage.html" class="footerLink" id="footerLink3">Contact</a> <br>
+        <p class="footerText">For any questions, use the 'Contact' page or reach me at: </p> 
+        <p class="footerText" id="emailAddress">mbaker7@zagmail.gonzaga.edu</p>
+      </footer>
+
+  </body>
+
+</html>
